@@ -3,14 +3,17 @@
 include_once 'functions.php';
 
 
-if(isset($_GET['pw-length'])){
-        
+if(isset($_GET['pw-length']) && isset($_GET['rep-word'])){
+    $repeat = $_GET['rep-word'];
+    var_dump($repeat);
     $pw_length=intval($_GET['pw-length']);
 
     if($pw_length > 0){
-
-        $new_password = random_char($pw_length);
+        if($repeat==='no')$new_password = random_char_unique($pw_length);
+        if($repeat==='yes')$new_password = random_char($pw_length);
         
+        echo $new_password;
+
         session_start();
         $_SESSION['password'] = $new_password;
 
@@ -33,6 +36,13 @@ if(isset($_GET['pw-length'])){
         <form>
             <label for="pw-length">Lunghezza passaword</label>
             <input type="number" id="pw-length" name="pw-length">
+
+            <label for="repetition">Si ripetizioni</label>
+            <input type="radio" name="rep-word" id="unique" value="yes">
+
+            <label for="unique">No ripetizioni</label>
+            <input type="radio" name="rep-word" id="unique" value="no">
+
             <button>Invia</button>
         </form>
     </main>
