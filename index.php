@@ -4,14 +4,18 @@ include_once 'functions.php';
 
 
 if(isset($_GET['pw-length'])){
-    header('Location: alert.php');
-
+        
     $pw_length=intval($_GET['pw-length']);
-    var_dump($pw_length);
-    $new_password = random_char($pw_length);
 
-    session_start();
-    $_SESSION['password'] = $new_password;
+    if($pw_length > 0){
+
+        $new_password = random_char($pw_length);
+        
+        session_start();
+        $_SESSION['password'] = $new_password;
+
+        header('Location: alert.php');
+    }
 }
 ?>
 
