@@ -4,9 +4,14 @@ include_once 'functions.php';
 
 
 if(isset($_GET['pw-length'])){
+    header('Location: alert.php');
+
     $pw_length=intval($_GET['pw-length']);
     var_dump($pw_length);
-    $password = random_char($pw_length);
+    $new_password = random_char($pw_length);
+
+    session_start();
+    $_SESSION['password'] = $new_password;
 }
 ?>
 
@@ -18,9 +23,7 @@ if(isset($_GET['pw-length'])){
     <title>Password</title>
 </head>
 <body>
-    <header>
-        <?php if(isset($_GET['pw-length'])) echo $password ?>
-    </header>
+    
     <main>
         <h1>PASSWORD</h1>
         <form>
@@ -30,7 +33,7 @@ if(isset($_GET['pw-length'])){
         </form>
     </main>
     <footer>
-        <a href="http://localhost/php-strong-password-generator/">Torna indietro</a>
+        <a href="http://localhost">Torna indietro</a>
     </footer>
 </body>
 </html>
