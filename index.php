@@ -3,10 +3,12 @@
 function random_char($length){
     $rand_word='';
     while(strlen($rand_word) < $length){
-        $rand_word .= chr(64 + rand(1,26));
+        $rand_word .= chr(rand(33,126));
     }
     return $rand_word;
 }
+
+
 
 if(isset($_GET['pw-length'])){
     $pw_length=intval($_GET['pw-length']);
@@ -20,7 +22,7 @@ if(isset($_GET['pw-length'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Password</title>
 </head>
 <body>
     <header>
