@@ -5,14 +5,13 @@ include_once 'functions.php';
 
 if(isset($_GET['pw-length']) && isset($_GET['rep-word'])){
     $repeat = $_GET['rep-word'];
-    var_dump($repeat);
     $pw_length=intval($_GET['pw-length']);
 
     if($pw_length > 0){
+        
         if($repeat==='no')$new_password = random_char_unique($pw_length);
         if($repeat==='yes')$new_password = random_char($pw_length);
         
-        echo $new_password;
 
         session_start();
         $_SESSION['password'] = $new_password;
