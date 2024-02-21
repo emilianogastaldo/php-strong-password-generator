@@ -24,4 +24,4 @@ Scegliere il set di caratteri tra numeri, lettere, simboli o qualsiasi combinazi
 
 Milestone 5 (BONUS): Aggiungere la validazione
 
-Buon divertimento! :smile:
+Buon divertimento!
